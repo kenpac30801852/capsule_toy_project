@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-p)6j01l7#x-8mb&&cmzs2(y4v@+zk27$nugv--e5sj8%h%7*l#
 DEBUG = True
 
 # すべてのIPを許可
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['capsule-toy-project.onrender.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
