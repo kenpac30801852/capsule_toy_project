@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+strong {
+    font-size: 18px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* カードデザイン */
+.card {
+    margin-bottom: 20px;  /* カード同士の間隔を統一 */
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* 画像の調整 */
+.card img {
+    max-width: 100%; /* カード幅いっぱいに広げる */
+    height: auto; /* 縦横比を保つ */
+    display: block;
+    margin: 0 auto; /* 中央寄せ */
+}
+
+/* 詳細ページの画像専用 */
+.toy-image {
+    max-width: 400px; /* 最大幅を400pxに */
+    width: 100%; /* 親要素に合わせる */
+    height: auto;
+    object-fit: contain; /* アスペクト比を保つ */
+    display: block;
+    margin: 0 auto; /* 画像を中央寄せ */
+}

@@ -1,0 +1,70 @@
+{% extends 'toys/base.html' %}
+{% load static %}
+
+{% block title %}カプセルトイ一覧{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <!-- PC版 -->
+        <div class="col-md-10 d-none d-md-block">
+            <h1 class="mb-4 text-center">カプセルトイ一覧</h1>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                {% for toy in toys %}
+                    <div class="col">
+                        <div class="card p-3 h-100 d-flex flex-column align-items-center">
+                            <!-- 画像 -->
+                            <div class="text-center">
+                                {% if toy.image_url %}
+                                    <img src="{{ toy.image_url }}" class="img-fluid rounded" alt="{{ toy.name }}">
+                                {% else %}
+                                    <img src="{% static 'images/画像準備中.png' %}" class="img-fluid rounded" alt="画像準備中">
+                                {% endif %}
+                            </div>
+                            
+                            <!-- 商品情報 -->
+                            <div class="card-body text-center">
+                                <h5 class="card-title">
+                                    <a href="{% url 'toy_detail' toy.id %}" class="text-decoration-none">{{ toy.name }}</a>
+                                </h5>
+                                <p class="card-text">価格: {{ toy.price }}円</p>
+                                <p class="card-text">メーカー: {{ toy.manufacturer }}</p>
+                                <a href="{{ toy.url }}" class="btn btn-outline-primary" target="_blank">公式ページ</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- スマホ版 -->
+        <div class="col-12 d-block d-md-none">
+            <h1 class="mb-4 text-center">カプセルトイ一覧</h1>
+            <div class="row row-cols-1 g-4">
+                {% for toy in toys %}
+                    <div class="col">
+                        <div class="card p-3 h-100 d-flex flex-column align-items-center">
+                            <!-- 画像（スマホ版でも表示） -->
+                            <div class="text-center">
+                                {% if toy.image_url %}
+                                    <img src="{{ toy.image_url }}" class="img-fluid rounded" alt="{{ toy.name }}" style="max-height: 200px;">
+                                {% else %}
+                                    <img src="{% static 'images/画像準備中.png' %}" class="img-fluid rounded" alt="画像準備中" style="max-height: 200px;">
+                                {% endif %}
+                            </div>
+
+                            <!-- 商品情報 -->
+                            <div class="card-body text-center">
+                                <h5 class="card-title">
+                                    <a href="{% url 'toy_detail' toy.id %}" class="text-decoration-none">{{ toy.name }}</a>
+                                </h5>
+                                <a href="{{ toy.url }}" class="btn btn-outline-primary" target="_blank">公式ページ</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

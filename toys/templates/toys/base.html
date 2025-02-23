@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}カプセルトイDB{% endblock %}</title>
+    
+    <!-- Bootstrap 読み込み -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <!-- ヘッダー -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'toy_list' %}">カプセルトイDB</a>
+        </div>
+    </nav>
+
+    <!-- メインコンテンツ -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- PC版のカテゴリ（左側に固定） -->
+            <div class="col-md-2 d-none d-md-block">
+                <h5>カテゴリ</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-decoration-none">アニメ系</a></li>
+                    <li><a href="#" class="text-decoration-none">動物系</a></li>
+                    <li><a href="#" class="text-decoration-none">ゲーム系</a></li>
+                    <li><a href="#" class="text-decoration-none">その他</a></li>
+                </ul>
+            </div>
+    
+            <!-- メインコンテンツ（カプセルトイ一覧） -->
+            <div class="col-md-8">
+                {% block content %}{% endblock %}
+            </div>
+    
+            <!-- 右サイドバー（おすすめ・ランキング） -->
+            <div class="col-md-2 d-none d-md-block">
+                <h5>おすすめやランキング</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-decoration-none">人気カプセルトイTOP3</a></li>
+                    <li><a href="#" class="text-decoration-none">今月の新商品</a></li>
+                </ul>
+            </div>
+        </div>
+    
+        <!-- スマホ版のカテゴリ（カプセルトイ一覧の下） -->
+{% if request.resolver_match.url_name == "toy_list" %}
+<div class="row mt-4 d-block d-md-none">
+    <div class="col">
+        <h5>カテゴリ</h5>
+        <ul class="list-unstyled">
+            <li><a href="#" class="text-decoration-none">アニメ系</a></li>
+            <li><a href="#" class="text-decoration-none">動物系</a></li>
+            <li><a href="#" class="text-decoration-none">ゲーム系</a></li>
+            <li><a href="#" class="text-decoration-none">その他</a></li>
+        </ul>
+    </div>
+</div>
+{% endif %}
+ <!-- ここでメインコンテンツのcontainerを閉じる -->
+
+<!-- フッター（ポリシー・お問い合わせ） -->
+<footer class="bg-secondary text-white text-center py-3 mt-4">
+    <p>© 2025 カプセルトイDB | <a href="#" class="text-white">ポリシー</a> | <a href="#" class="text-white">お問い合わせ</a></p>
+</footer>
+
+<!-- Bootstrap JavaScript 読み込み -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
