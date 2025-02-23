@@ -1,0 +1,12 @@
+{% extends 'toys/base.html' %}
+
+{% block title %}公式情報なし{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-center">本来は公式サイトに飛びますが、一旦このページを表示しております</h1>
+    <div class="text-center">
+        <a href="{% url 'toy_list' %}" class="btn btn-primary">一覧に戻る</a>
+    </div>
+</div>
+{% endblock %}

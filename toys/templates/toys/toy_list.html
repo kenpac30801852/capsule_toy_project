@@ -29,7 +29,8 @@
                                 </h5>
                                 <p class="card-text">価格: {{ toy.price }}円</p>
                                 <p class="card-text">メーカー: {{ toy.manufacturer }}</p>
-                                <a href="{{ toy.url }}" class="btn btn-outline-primary" target="_blank">公式ページ</a>
+                                <a href="{% if toy.url %}{{ toy.url }}{% else %}{% url 'no_official_info' %}{% endif %}" class="btn btn-outline-primary" target="_blank">公式ページ</a>
+
                             </div>
                         </div>
                     </div>
@@ -58,7 +59,7 @@
                                 <h5 class="card-title">
                                     <a href="{% url 'toy_detail' toy.id %}" class="text-decoration-none">{{ toy.name }}</a>
                                 </h5>
-                                <a href="{{ toy.url }}" class="btn btn-outline-primary" target="_blank">公式ページ</a>
+                                <a href="{% if toy.url %}{{ toy.url }}{% else %}{% url 'no_official_info' %}{% endif %}" class="btn btn-outline-primary" target="_blank">公式ページ</a>
                             </div>
                         </div>
                     </div>

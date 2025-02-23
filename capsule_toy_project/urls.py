@@ -16,10 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from toys.views import toy_list, toy_detail  # ← toy_detail をインポート！
+from toys import views  # 'capsule_toy_project' ではなく 'toys' をインポート
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', toy_list, name='toy_list'),
-    path('toy/<int:toy_id>/', toy_detail, name='toy_detail'),  # ← ここが重要！
+    path('', views.toy_list, name='toy_list'),
+    path('toy/<int:toy_id>/', views.toy_detail, name='toy_detail'),
+    path('no-official-info/', views.no_official_info, name='no_official_info'),  # 公式情報なしページ
 ]
